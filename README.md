@@ -20,12 +20,14 @@ Results
 -------
 This repository contains a Gradle multi-project setup, with two sub-projects.  One is a basic "Hello 
 World" command-line application, and the other a JavaFX app.  These are the resulting sizes of the 
-native application bundles that are generated, both raw as well as after being compressed with 7-zip.
+native application bundles that are generated, both raw as well as after being compressed with 7-zip, 
+on a 64-bit Windows system (with Electron for comparison):
 
-App   | Raw Size | With 7-zip Compression
------ | -------- | ----------------------
-`cli` | 21.7 MB  | 10.8 MB               
-`gui` | 45.8 MB  | 29.1 MB               
+App   | Compressed with 7-zip | Raw Size when deployed
+----- | --------------------- | ----------------------
+`cli` (command-line application) | 10.8 MB | 21.7 MB               
+`gui` (JavaFX desktop application) | 29.1 MB | 45.8 MB
+[electron-quick-start](https://github.com/electron/electron-quick-start) example | 32.8 MB | 131 MB
 
 How to Build
 ------------
