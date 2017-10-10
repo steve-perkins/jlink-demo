@@ -1,6 +1,6 @@
-module jlinkdemo {
+module gui {
     requires javafx.graphics;
     requires javafx.controls;
 
-    exports jlinkdemo;
+    exports gui;
 }

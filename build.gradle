@@ -1,36 +1,12 @@
-group 'com.steveperkins'
-version '1.0.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.9
-
-repositories {
-    mavenCentral()
+task cleanAll(type: GradleBuild) {
+    tasks = ['gui:clean']
 }
 
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+task linkAll(type: GradleBuild) {
+    tasks = ['gui:link']
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '4.2.1'
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'jlinkdemo.Main'
-    }
-}
-
-def java_home = System.getenv('JAVA_HOME')
-task link(type: Exec) {
-    dependsOn 'clean'
-    dependsOn 'jar'
-
-    workingDir 'build'
-
-    commandLine "${java_home}/bin/jlink", '--module-path', "libs;${java_home}/jmods", '--add-modules', 'jlinkdemo',
-            '--launcher', 'jlinkdemo=jlinkdemo/jlinkdemo.Main', '--output', 'dist', '--strip-debug', '--compress', '2',
-            '--no-header-files', '--no-man-pages'
-}
