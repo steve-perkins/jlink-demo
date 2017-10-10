@@ -16,3 +16,21 @@ dependencies {
 task wrapper(type: Wrapper) {
     gradleVersion = '4.2.1'
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'jlinkdemo.Main'
+    }
+}
+
+def java_home = System.getenv('JAVA_HOME')
+task link(type: Exec) {
+    dependsOn 'clean'
+    dependsOn 'jar'
+
+    workingDir 'build'
+
+    commandLine "${java_home}/bin/jlink", '--module-path', "libs;${java_home}/jmods", '--add-modules', 'jlinkdemo',
+            '--launcher', 'jlinkdemo=jlinkdemo/jlinkdemo.Main', '--output', 'dist', '--strip-debug', '--compress', '2',
+            '--no-header-files', '--no-man-pages'
+}
