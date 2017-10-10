@@ -23,9 +23,9 @@ World" command-line application, and the other a JavaFX app.  These are the resu
 native application bundles that are generated, both raw as well as after being compressed with 7-zip.
 
 App   | Raw Size | With 7-zip Compression
------ - -------- - ----------------------
-cli | 21.7 MB  | 10.8 MB               
-gui | 45.8 MB  | 29.1 MB               
+----- | -------- | ----------------------
+`cli` | 21.7 MB  | 10.8 MB               
+`gui` | 45.8 MB  | 29.1 MB               
 
 How to Build
 ------------
