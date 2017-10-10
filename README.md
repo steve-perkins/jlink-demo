@@ -24,8 +24,8 @@ native application bundles that are generated, both raw as well as after being c
 
 App   | Raw Size | With 7-zip Compression
 ----- - -------- - ----------------------
-`cli` | 21.7 MB  | 10.8 MB               
-`gui` | 45.8 MB  | 29.1 MB               
+cli | 21.7 MB  | 10.8 MB               
+gui | 45.8 MB  | 29.1 MB               
 
 How to Build
 ------------
