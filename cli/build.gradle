@@ -1,0 +1,32 @@
+group 'com.steveperkins'
+version '1.0.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.9
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'cli.Main'
+    }
+}
+
+def java_home = System.getenv('JAVA_HOME')
+task link(type: Exec) {
+    dependsOn 'clean'
+    dependsOn 'jar'
+
+    workingDir 'build'
+
+    commandLine "${java_home}/bin/jlink", '--module-path', "libs;${java_home}/jmods", '--add-modules', 'cli',
+            '--launcher', 'cli=cli/cli.Main', '--output', 'dist', '--strip-debug', '--compress', '2',
+            '--no-header-files', '--no-man-pages'
+}

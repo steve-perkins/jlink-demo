@@ -1,9 +1,9 @@
 task cleanAll(type: GradleBuild) {
-    tasks = ['gui:clean']
+    tasks = ['cli:clean', 'gui:clean']
 }
 
 task linkAll(type: GradleBuild) {
-    tasks = ['gui:link']
+    tasks = ['cli:link', 'gui:link']
 }
 
 task wrapper(type: Wrapper) {
